@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Item;
+use Auth;
+use App\User;
+use App\Http\Controllers\Controller;
 
 class ListController extends Controller
 {
