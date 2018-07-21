@@ -7,15 +7,15 @@ use App\Item;
 
 class ListController extends Controller
 {
-    
+    //List All Items
     public function index()
     {
         $items = Item::all();
         $pending = Item::where('status','=','0')->count();
-        //return view('list')->with('items', $items);
         return view('list', compact('items','pending'));
     }
 
+    //Create a new Item to the list
     public function create(Request $request)
     {
         $item = new Item;
@@ -25,15 +25,15 @@ class ListController extends Controller
         return 'created';
     }
     
+    //Delete a Item from the list
     public function delete(Request $request)
     {
-       // Item::where('id',$request->id)->delete();
-        //return $request->all();
         $item = Item::find($request->id);
         $item->delete();
         return "deleted";
     }
 
+    //Update the Item
     public function update(Request $request)
     {
         $item = Item::find($request->id);
@@ -43,12 +43,9 @@ class ListController extends Controller
         return $request->all();
     }
 
+    //Search for the Item (Just AutoComplete)
     public function search(Request $request)
     {
-        //$item = Item::find($request->id);
-        //$item->item = $request->value;
-        //$item->save();
-
         $term = $request->term;
         $items = Item::where('item', 'LIKE', '%'.$term.'%')->get();
         //return $item;
@@ -59,32 +56,7 @@ class ListController extends Controller
                 $searchResult[] = $item->item; 
             }
         }
-        return $searchResult;
-
-        /*return $availableTags = [
-                    "ActionScript",
-                    "AppleScript",
-                    "Asp",
-                    "BASIC",
-                    "C",
-                    "C++",
-                    "Clojure",
-                    "COBOL",
-                    "ColdFusion",
-                    "Erlang",
-                    "Fortran",
-                    "Groovy",
-                    "Haskell",
-                    "Java",
-                    "JavaScript",
-                    "Lisp",
-                    "Perl",
-                    "PHP",
-                    "Python",
-                    "Ruby",
-                    "Scala",
-                    "Scheme"
-        ];*/
+        return $searchResult;    
     }
 
 }
