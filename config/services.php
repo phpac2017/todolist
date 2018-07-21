@@ -35,4 +35,17 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'google' => [
+        'client_id' => '937733730410-oi3ck8dtfi9neklitdr3rlmhp52laarp.apps.googleusercontent.com',
+        'client_secret' => 'vnqZ7DedvCdOclv2b-gsands',
+        'redirect' => 'https://todolistgovind.herokuapp.com/auth/google/callback',
+    ],
+
+    'facebook' => [
+        'client_id' => '637254249952950',
+        'client_secret' => 'f2472b48a668d3623e18f9f9276cc473',
+        'redirect' => 'https://todolistgovind.herokuapp.com/auth/facebook/callback',
+    ],
+
+
 ];
