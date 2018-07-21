@@ -18,7 +18,7 @@
             <div class="col-lg-offset-3 col-lg-6">
 				<div class="panel panel-default">
 				  <div class="panel-heading">
-				    <h3 class="panel-title">Laravel - ToDo List <a href="#" class="pull-right" data-toggle="modal" data-target="#myModal" id="addNew"><i class="fa fa-plus" aria-hidden="true"></i></a></h3>
+				    <h3 class="panel-title">Laravel - ToDo List (Click on Each Item to Update or Delete)<a href="#" class="pull-right" data-toggle="modal" data-target="#myModal" id="addNew"><i class="fa fa-plus" aria-hidden="true"></i></a></h3>
 				  </div>
 				  <div class="panel-body" id="items">
 				    @if(count($items)>0)
@@ -26,7 +26,7 @@
                             @foreach($items as $item)
                                 <li class="list-group-item ourItem" data-toggle="modal" data-target="#myModal">
                                     <?php if($item->status==1){$status = "checked";}else{$status = "";}?>
-                                    <input type="checkbox" name="status" id="statusId" value="{{$item->id}}" <?php echo $status;?>>{{$item->item}}<input type="hidden" id="itemId" value="{{$item->id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br />
+                                    <input type="checkbox" name="status" id="statusId" value="{{$item->id}}" <?php echo $status;?>>{{$item->item}}<input type="hidden" id="itemId" value="{{$item->id}}"><br />
                                 </li>
                             @endforeach
                         </ul>
