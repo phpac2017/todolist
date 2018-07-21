@@ -152,7 +152,7 @@
                 //$('#setItem').attr(id, 'setItem'+id);
                 //alert(id);
                 var value = $('#addItem').val();
-                var len = text.length;
+                var len = value.length;
                 if (len > 100) {
                     alert('100 Characters only allowed');
                     return false;
