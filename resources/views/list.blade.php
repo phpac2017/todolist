@@ -92,7 +92,7 @@
                         <p>No item found !</p>
                     @endif  
                     Total Items : <?php echo count($items);?><br/>
-                    Completed Items : <?php echo count($completed);?><br/>
+                    Completed Items : <?php echo $completed;?><br/>
                     Pending Items : <?php echo $pending;?>
 				  </div>
 				</div>
