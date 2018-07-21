@@ -20,6 +20,7 @@ class ListController extends Controller
     {
         $item = new Item;
         $item->item = $request->text;
+        $item->status = $request->status;
         $item->save();
         return 'created';
     }

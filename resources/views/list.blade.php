@@ -18,7 +18,7 @@
             <div class="col-lg-offset-3 col-lg-6">
 				<div class="panel panel-default">
 				  <div class="panel-heading">
-				    <h3 class="panel-title">Ajax ToDo List <a href="#" class="pull-right" data-toggle="modal" data-target="#myModal" id="addNew"><i class="fa fa-plus" aria-hidden="true"></i></a></h3>
+				    <h3 class="panel-title">Laravel - ToDo List <a href="#" class="pull-right" data-toggle="modal" data-target="#myModal" id="addNew"><i class="fa fa-plus" aria-hidden="true"></i></a></h3>
 				  </div>
 				  <div class="panel-body" id="items">
 				    @if(count($items)>0)
@@ -54,7 +54,7 @@
                         <div class="modal-body">
                             <input type="hidden" id="id">
                             <p><input type="text" id="addItem" placeholder="write item here ..." class="form-control"></p>
-                            <p><input type="checkbox" id="setItem" class="form-control"></p>
+                            <p>Select Check to Complete this item<input type="checkbox" id="setItem" class="form-control"></p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-warning" data-dismiss="modal" style="display:none;" id="delete">Delete</button>
@@ -106,10 +106,16 @@
 
             $('#add').click(function(){
                 var text = $('#addItem').val();
+                var sid = $('#setItem').prop('checked'); 
+                if(sid === true){
+                    status = 1;
+                }else{
+                    status = 0;
+                }
                 if(text == "") {
                     alert('please type anything for item');
                 } else { 
-                    $.post('create', {'text': text,'_token':$('input[name=_token]').val()}, function(data) {
+                    $.post('create', {'text': text,'status': status,'_token':$('input[name=_token]').val()}, function(data) {
                         //console.log(data);
                         $('#items').load(location.href + ' #items')
                     });
