@@ -80,7 +80,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Laravel - ToDo List Application
                 </div>
 
                 <div class="links">
