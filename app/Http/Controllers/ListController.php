@@ -9,10 +9,14 @@ class ListController extends Controller
 {
     //List All Items
     public function index()
-    {
-        $items = Item::all();
-        $pending = Item::where('status','=','0')->count();
-        return view('list', compact('items','pending'));
+    { 
+        if(Auth::user){
+            $items = Item::all();
+            $pending = Item::where('status','=','0')->count();
+            return view('list', compact('items','pending'));
+        }else{
+            return redirect('/');
+        }
     }
 
     //Create a new Item to the list

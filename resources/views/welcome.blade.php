@@ -84,7 +84,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="https://github.com/phpac2017/todolist">Source Code - GitHub</a>
+                    <a target="_blank" href="https://github.com/phpac2017/todolist">Source Code - GitHub</a>
                 </div>
             </div>
         </div>
