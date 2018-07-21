@@ -15,8 +15,9 @@ class ListController extends Controller
     { 
         if(Auth::user()){
             $items = Item::all();
+            $completed = Item::where('status','=','1')->count();
             $pending = Item::where('status','=','0')->count();
-            return view('list', compact('items','pending'));
+            return view('list', compact('items','pending','completed'));
         }else{
             return redirect('/');
         }
