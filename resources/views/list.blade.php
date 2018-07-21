@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ajax  toDi list project</title>
+    <title>Laravel - ToDo List Application</title>
     {{-- CSS --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    {{-- Font awsome --}}
+    {{-- Font awesome --}}
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 <body>
@@ -53,7 +53,7 @@
                         </div>
                         <div class="modal-body">
                             <input type="hidden" id="id">
-                            <p><input type="text" id="addItem" placeholder="write item here ..." class="form-control"></p>
+                            <p><input type="text" id="addItem" placeholder="Enter Values (Max 100 Char) ..." class="form-control"></p>
                             <p>Select Check to Complete this item<input type="checkbox" id="setItem" class="form-control"></p>
                         </div>
                         <div class="modal-footer">
@@ -103,9 +103,23 @@
                 $('#update').hide();
                 $('#addItem').val("");
             });
+            
+            $('input').on('keypress', function (event) {
+                var regex = new RegExp("^[a-zA-Z0-9-,_]+$");
+                var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+                if (!regex.test(key)) {
+                event.preventDefault();
+                return false;
+                }
+            });
 
             $('#add').click(function(){
                 var text = $('#addItem').val();
+                var len = text.value.length;
+                if (len > 100) {
+                    alert('100 Characters only allowed');
+                    return false;
+                }
                 var sid = $('#setItem').prop('checked'); 
                 if(sid === true){
                     status = 1;
@@ -138,6 +152,11 @@
                 //$('#setItem').attr(id, 'setItem'+id);
                 //alert(id);
                 var value = $('#addItem').val();
+                var len = text.value.length;
+                if (len > 100) {
+                    alert('100 Characters only allowed');
+                    return false;
+                }
                 var sid = $('#setItem').prop('checked'); 
                 if(sid === true){
                     status = 1;
