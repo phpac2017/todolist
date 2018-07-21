@@ -26,7 +26,7 @@
                             @foreach($items as $item)
                                 <li class="list-group-item ourItem" data-toggle="modal" data-target="#myModal">
                                     <?php if($item->status==1){$status = "checked";}else{$status = "";}?>
-                                    <input type="checkbox" name="status" id="statusId" value="{{$item->id}}" <?php echo $status;?>>{{$item->item}}<input type="hidden" id="itemId" value="{{$item->id}}"><br />
+                                    <input type="checkbox" name="status" id="statusId" value="{{$item->id}}" <?php echo $status;?>>{{$item->item}}<input type="hidden" id="itemId" value="{{$item->id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br />
                                 </li>
                             @endforeach
                         </ul>
